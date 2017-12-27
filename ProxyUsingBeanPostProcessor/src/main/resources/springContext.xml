@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="pizzaRepo" class="com.hw.repository.impl.PizzaRepoImpl" init-method="init"/>
+    <bean name="orderRepo" class="com.hw.repository.impl.OrderRepoImpl"/>
+    <bean name="userRepo" class="com.hw.repository.impl.UserRepoImpl" init-method="init"/>
+
+    <bean name="userService" class="com.hw.service.impl.UserServiceImpl">
+        <constructor-arg ref="userRepo"/>
+    </bean>
+    <bean name="orderService" class="com.hw.service.impl.OrderServiceImpl">
+        <constructor-arg ref="orderRepo"/>
+    </bean>
+    <bean name="pizzaService" class="com.hw.service.impl.PizzaServiceImpl">
+        <constructor-arg ref="pizzaRepo"/>
+    </bean>
+
+    <bean class="com.hw.config.BenchmarkBeanPostProcessor"/>
+</beans>

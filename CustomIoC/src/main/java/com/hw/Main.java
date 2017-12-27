@@ -20,6 +20,6 @@ public class Main {
 //        RepoBean.class
         SimpleIoC ioC = new SimpleIoC(config);
         RepoBeanInterFace repoBean = (RepoBeanInterFace) ioC.getBean("repoBean");
-        repoBean.calculate();
+        System.out.println(repoBean.calculate());
     }
 }
