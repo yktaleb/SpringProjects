@@ -1,6 +1,5 @@
 package com.hw.config;
 
-import com.hw.config.annotation.Benchmark;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 

@@ -11,6 +11,7 @@
     <modules>
         <module>CustomIoC</module>
         <module>ProxyUsingBeanPostProcessor</module>
+        <module>ProjectWithJavaConfig</module>
     </modules>
 
     <properties>

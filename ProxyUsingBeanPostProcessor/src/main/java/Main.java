@@ -2,12 +2,12 @@ import com.hw.domain.PizzaType;
 import com.hw.service.OrderService;
 import com.hw.service.PizzaService;
 import com.hw.service.UserService;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context =
+        ApplicationContext context =
                 new ClassPathXmlApplicationContext("springContext.xml");
 
         PizzaService pizzaService = (PizzaService) context.getBean("pizzaService");

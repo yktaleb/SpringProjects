@@ -1,4 +1,4 @@
-package com.hw.config.annotation;
+package com.hw.config;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
