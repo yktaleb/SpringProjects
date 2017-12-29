@@ -11,6 +11,10 @@ public class Order {
     public Order() {
     }
 
+    public Order(User user) {
+        this.user = user;
+    }
+
     public Order(Long id, List<Pizza> pizzas, User user, double price) {
         this.id = id;
         this.pizzas = pizzas;

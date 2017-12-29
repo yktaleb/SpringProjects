@@ -11,7 +11,7 @@ import java.lang.reflect.Proxy;
 public class BenchmarkBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        Class<?> beanClass = bean.getClass();
+        /*Class<?> beanClass = bean.getClass();
         if (hasAnnotatedBenchmarkMethod(beanClass)) {
             return Proxy.newProxyInstance(beanClass.getClassLoader(),
                     bean.getClass().getInterfaces(),
@@ -39,9 +39,9 @@ public class BenchmarkBeanPostProcessor implements BeanPostProcessor {
                             return invoke;
                         }
                     });
-        } else {
+        } else {*/
             return bean;
-        }
+        /*}*/
     }
     private boolean hasAnnotatedBenchmarkMethod(Class<?> beanClass) {
         Method[] methods = beanClass.getMethods();

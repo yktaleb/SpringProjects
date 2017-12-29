@@ -38,6 +38,10 @@ public class OrderServiceImpl implements OrderService {
         return null;
     }
 
+    public Order createEmptyOrder() {
+        return new Order();
+    }
+
     @Override
     public List<Order> getAllOrders() {
         return orderRepo.allOrders();

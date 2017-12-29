@@ -20,7 +20,11 @@ public class Main {
                 new AnnotationConfigApplicationContext();
         serviceContext.setParent(repoContext);
         serviceContext.register(ServiceConfig.class);
+
+//        serviceContext.getEnvironment().setActiveProfiles("test");
+
         serviceContext.refresh();
+
 
         PizzaService pizzaService = (PizzaService) serviceContext.getBean("pizzaService");
         OrderService orderService = (OrderService) serviceContext.getBean("orderService");
