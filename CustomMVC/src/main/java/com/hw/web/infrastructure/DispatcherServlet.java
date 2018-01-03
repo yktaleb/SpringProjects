@@ -1,6 +1,5 @@
 package com.hw.web.infrastructure;
 
-import com.hw.config.WebConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.ServletException;
@@ -15,9 +14,13 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
+        AnnotationConfigApplicationContext rootContext =
+                (AnnotationConfigApplicationContext) getServletContext().getAttribute("rootContext");
+
         Class<?> config = getConfig();
         webContext = new AnnotationConfigApplicationContext();
-        webContext.register(WebConfig.class);
+        webContext.setParent(rootContext);
+        webContext.register(config);
         webContext.refresh();
     }
 

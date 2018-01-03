@@ -4,6 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <listener>
+        <listener-class>com.hw.web.infrastructure.SpringRootContextLoader</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>rootContexts</param-name>
+        <param-value>com.hw.config.RepositoryConfig com.hw.config.ServiceConfig</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>com.hw.web.infrastructure.DispatcherServlet</servlet-class>
@@ -11,7 +20,7 @@
 
         <init-param>
             <param-name>contextLocation</param-name>
-            <param-value>WebConfig.class</param-value>
+            <param-value>com.hw.config.WebConfig</param-value>
         </init-param>
     </servlet>
 
