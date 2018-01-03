@@ -12,6 +12,7 @@
         <module>CustomIoC</module>
         <module>ProxyUsingBeanPostProcessor</module>
         <module>ProjectWithJavaConfig</module>
+        <module>CustomMVC</module>
     </modules>
 
     <properties>
@@ -40,6 +41,7 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
