@@ -1,21 +1,39 @@
 package com.hw.web.infrastructure;
 
+import com.hw.config.WebConfig;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DispatcherServlet extends HttpServlet {
 
-    private Map<String, MyController> controllerMap = new HashMap<>();
+    private AnnotationConfigApplicationContext webContext;
 
     @Override
     public void init() throws ServletException {
-        controllerMap.put("/hello", new HelloController());
-        controllerMap.put("/pizza", new PizzaController());
+        Class<?> config = getConfig();
+        webContext = new AnnotationConfigApplicationContext();
+        webContext.register(WebConfig.class);
+        webContext.refresh();
+    }
+
+    private Class<?> getConfig() {
+        String contextLocation = getServletConfig().getInitParameter("contextLocation");
+        try {
+            return Class.forName(contextLocation);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+    }
+
+    @Override
+    public void destroy() {
+        webContext.close();
     }
 
     @Override
@@ -35,12 +53,12 @@ public class DispatcherServlet extends HttpServlet {
 
     private MyController getController(HttpServletRequest req) {
         String controllerName = getControllerNameFromRequest(req);
-        return controllerMap.get(controllerName);
+        return webContext.getBean(controllerName, MyController.class);
     }
 
     private String getControllerNameFromRequest(HttpServletRequest req) {
         String requestURI = req.getRequestURI();
-        return requestURI.substring(requestURI.lastIndexOf('/'));
+        return requestURI.substring(requestURI.lastIndexOf('/') + 1);
     }
 
 }

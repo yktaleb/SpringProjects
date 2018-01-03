@@ -13,6 +13,10 @@ public class PizzaController implements MyController {
 
     private PizzaService pizzaService;
 
+    public PizzaController(PizzaService pizzaService) {
+        this.pizzaService = pizzaService;
+    }
+
     @Override
     public void handleRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try(PrintWriter writer = resp.getWriter()) {

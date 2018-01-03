@@ -8,6 +8,11 @@
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>com.hw.web.infrastructure.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
+
+        <init-param>
+            <param-name>contextLocation</param-name>
+            <param-value>WebConfig.class</param-value>
+        </init-param>
     </servlet>
 
     <servlet-mapping>
